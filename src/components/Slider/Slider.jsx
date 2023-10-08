@@ -1,5 +1,4 @@
 import React from 'react'
-import Search from '../../assets/icons/Search'
 import Category from '../Category/Category'
 import Annonce from "../../assets/icons/Annonce"
 import Enter from "../../assets/icons/Enter"

@@ -10,7 +10,7 @@ const AllOrders = () => {
   const [loading , setLoading ] = useState(false)
 
   useEffect(()=>{
-    axios.get(`https://panda-snack-server.vercel.app/orders/showOrdersByuserId/${user_id}`,{
+    axios.get(`https://panda-snack-back.vercel.app/orders/showOrdersByuserId/${user_id}`,{
       headers: {
         Authorization: 'JWT Mft26100$$',
       }}).then((res) => {
@@ -26,7 +26,7 @@ const AllOrders = () => {
   const Delete = async (idOrder) =>{
     try{
       setLoading(true)
-      const response = await axios.delete(`https://panda-snack-server.vercel.app/orders/orders/${idOrder}`)
+      const response = await axios.delete(`https://panda-snack-back.vercel.app/orders/orders/${idOrder}`)
       if(response){
         window.location.reload();
       }
@@ -43,7 +43,7 @@ const AllOrders = () => {
             {
               allOrders && allOrders.map((order)=>(
                 <div className="flex items-center justify-between md:flex-row flex-col mb-4" key={order._id}>
-                    <img src={`https://panda-snack-server.vercel.app/meal_picture/${order.meal.Mealpicture}`} alt="Err"  className="md:w-[150px] w-[150px] hover:rotate-12 duration-500 transition-all"  />
+                    <img src={`https://panda-snack-back.vercel.app/meal_picture/${order.meal.Mealpicture}`} alt="Err"  className="md:w-[150px] w-[150px] hover:rotate-12 duration-500 transition-all"  />
                     <h1 className="font-mono font-semibold my-1text-lg dark:text-white">{order.meal.name}</h1>
                     <h1 className="font-mono font-semibold md:my-0 my-1 text-lg dark:text-white">{order.quantity} * {order.meal.price} = <span className='dark:text-lime-500 text-lime-700'>{order.totalPrice} DHs</span></h1>
                     <div className='flex flex-col'>

@@ -23,17 +23,16 @@ const SignIn = () => {
   const Login = async () =>{
     try{
       setLoading(true)
-      const response = await axios.post('https://panda-snack-server.vercel.app/users/login' , 
-      {
-        email : email,
-        password : password
-      },
-      {
-        headers: {
-          Authorization: 'JWT Mft26100$$',
-          'Content-Type': 'application/json',
-        },
-      }
+      const response = await axios.post(
+        'https://panda-snack-back.vercel.app/users/login',
+        {
+            email: email,
+            password: password,
+        },{
+          headers: {
+            'Content-Type' : 'application/json'
+          }
+        }
       );
       if(response.data.accessToken) {
         Cookies.set('token',response.data.accessToken , { expires: 2 });
@@ -45,11 +44,12 @@ const SignIn = () => {
         navigate('/')
         window.location.reload();
       }
-    } catch (error){
-      setErr(error.response.data)
-    } finally {
-      setLoading(false)
-    }
+    } catch (error) {
+      console.log('Error during login:', error);
+      setErr("Err");
+  } finally {
+      setLoading(false);
+  }
 
   } 
 

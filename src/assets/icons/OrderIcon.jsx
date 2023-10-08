@@ -8,11 +8,7 @@ const OrderIcon = () => {
 
   const fetchOrderCount = async () => {
     try {
-      const response = await axios.get(`https://panda-snack-server.vercel.app/orders/countOrdersByUserId/${user_id}`, {
-        headers: {
-          Authorization: 'JWT Mft26100$$',
-        },
-      });
+      const response = await axios.get(`https://panda-snack-server.vercel.app/orders/countOrdersByUserId/${user_id}`);
       setOrderCount(response.data.orderCount);
     } catch (error) {
       console.error('Error fetching order count:', error);

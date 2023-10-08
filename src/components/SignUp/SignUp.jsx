@@ -39,10 +39,10 @@ const Subscribe = async () => {
     formData.append('password', password);
     formData.append('picture', picture); 
 
-    const response = await axios.post('https://panda-snack-server.vercel.app/users/subscribe', formData, {
+    const response = await axios.post('https://panda-snack-back.vercel.app/users/subscribe', formData, {
       headers: {
         Authorization: 'JWT Mft26100$$',
-        'Content-Type': 'multipart/form-data', // Set the content type to 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
       },
     });
 
