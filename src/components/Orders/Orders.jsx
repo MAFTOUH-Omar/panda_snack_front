@@ -39,12 +39,6 @@ const Orders = () => {
             quantity: quantity,
             totalPrice: totalPrice,
             userId : user_id
-          },
-          {
-            headers: {
-              Authorization: 'JWT Mft26100$$',
-              'Content-Type': 'application/json',
-            },
           }
         );
         if (response.status === 201) {

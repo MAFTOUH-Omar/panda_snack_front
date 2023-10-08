@@ -9,14 +9,18 @@ import {  Link } from 'react-router-dom'
 import Logo from "../../assets/Images/logo.png"
 
 const SignIn = () => {
-  const [email , setEmail] = useState()
-  const [password , setPassword] = useState()
+  const [email , setEmail] = useState('')
+  const [password , setPassword] = useState('')
   const [Err , setErr] = useState()
   const [loading , setLoading] = useState(false)
   const [showPassword , setShowPassword] = useState(false); //Show & hide password
   const togglePasswordVisibilty = () =>{
     setShowPassword(!showPassword)
   }
+  const data = {
+    email : email,
+    password : password
+  } 
 
   const navigate = useNavigate();
 
@@ -24,16 +28,8 @@ const SignIn = () => {
     try{
       setLoading(true)
       const response = await axios.post(
-        'https://panda-snack-back.vercel.app/users/login',
-        {
-            email: email,
-            password: password,
-        },{
-          headers: {
-            'Content-Type' : 'application/json'
-          }
-        }
-      );
+        'https://panda-snack-back.vercel.app/user/login',data
+      );      
       if(response.data.accessToken) {
         Cookies.set('token',response.data.accessToken , { expires: 2 });
         Cookies.set('email',response.data.user.email , { expires: 2 });

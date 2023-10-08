@@ -10,10 +10,7 @@ const AllOrders = () => {
   const [loading , setLoading ] = useState(false)
 
   useEffect(()=>{
-    axios.get(`https://panda-snack-back.vercel.app/orders/showOrdersByuserId/${user_id}`,{
-      headers: {
-        Authorization: 'JWT Mft26100$$',
-      }}).then((res) => {
+    axios.get(`https://panda-snack-back.vercel.app/orders/showOrdersByuserId/${user_id}`).then((res) => {
         setInterval(()=>{
           setAllOrders(res.data.orders)
         });
