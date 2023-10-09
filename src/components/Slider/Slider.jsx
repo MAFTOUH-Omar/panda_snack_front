@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Category from '../Category/Category'
 import Annonce from "../../assets/icons/Annonce"
 import Enter from "../../assets/icons/Enter"
@@ -7,17 +7,7 @@ import CircularProgressBar from '../ProgressBar/CircularProgressBar'
 const Slider = () => {
   const navigate = useNavigate()
   //Progress Bar
-  const [progress, setProgress] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (progress < 20) {
-        setProgress(progress + 1);
-      } else {
-        clearInterval(interval);
-      }
-    }, 100);
-    return () => clearInterval(interval);
-  }, [progress]);
+
   //End
   return (
     <main className='flex justify-center items-center pt-[120px] dark:bg-slate-900 flex-col'> 
@@ -42,7 +32,7 @@ const Slider = () => {
       </div>
       {/* Progress Bar */}
       <div className="my-5">
-        <CircularProgressBar percentage={progress} />
+        <CircularProgressBar />
       </div>
     </main>
   )

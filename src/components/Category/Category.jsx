@@ -58,10 +58,10 @@ const Category = () => {
         ))}
     </div>
     {/* Repas */}
-    <div className='flex flex-wrap items-center justify-center mt-10 flex-grow md:mx-20 my-10'>
+    <div className='flex flex-wrap items-center justify-center mt-10 flex-grow my-10'>
         {mealsByCat &&
         mealsByCat.map((item) => (
-            <div key={item._id} className='md:w-1/3 dark:bg-lime-900 my-1 py-1 px-2 sm:w-1/2 flex items-center border-2 border-lime-300 rounded-md mx-2 md:mx-1 flex-col h-[425px]'>
+            <div key={item._id}  className='md:w-1/3 dark:bg-lime-900 my-1 py-1 px-2 sm:w-1/2 flex items-center border-2 border-lime-300 rounded-md mx-2 md:mx-1 flex-col h-[425px]'>
                 <img src={`https://panda-snack-back-v2.vercel.app/meal_picture/${item.Mealpicture}`} alt={item.name} className='hover:rotate-45 transition-all duration-500' width={250}/>
                 <h1 className='font-mono text-xl dark:text-white'>{item.name}</h1>
                 <h1 className=' text-lg text-slate-700 dark:text-slate-200 text-center'>{item.description}</h1>

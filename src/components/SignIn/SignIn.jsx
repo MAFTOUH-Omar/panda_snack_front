@@ -41,8 +41,8 @@ const SignIn = () => {
         window.location.reload();
       }
     } catch (error) {
-      console.log('Error during login:', error);
-      setErr("Err");
+      console.log('Error during login:', error.response.data);
+      setErr(error.response.data);
   } finally {
       setLoading(false);
   }

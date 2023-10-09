@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Hide from '../../assets/icons/Hide'
 import Show from '../../assets/icons/Show'
-import CoverPhoto from '../../assets/icons/CoverPhoto'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { LineWobble } from '@uiball/loaders'
