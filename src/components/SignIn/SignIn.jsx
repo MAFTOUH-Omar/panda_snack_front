@@ -28,7 +28,7 @@ const SignIn = () => {
     try{
       setLoading(true)
       const response = await axios.post(
-        'https://panda-snack-back.vercel.app/user/login',data
+        'https://panda-snack-back-v2.vercel.app/users/login',data
       );      
       if(response.data.accessToken) {
         Cookies.set('token',response.data.accessToken , { expires: 2 });

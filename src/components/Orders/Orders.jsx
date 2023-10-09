@@ -29,12 +29,12 @@ const Orders = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          'https://panda-snack-back.vercel.app/orders/orders',
+          'https://panda-snack-back-v2.vercel.app/orders/orders',
           {
             name: name,
             email: Orderemail,
             phone: phone,
-            adress: address, // Changed 'adress' to 'address'
+            adress: address, 
             meal: id,
             quantity: quantity,
             totalPrice: totalPrice,
@@ -53,7 +53,7 @@ const Orders = () => {
 
     useEffect(() => {
         axios
-          .get(`https://panda-snack-back.vercel.app/meals/meals/${id}`)
+          .get(`https://panda-snack-back-v2.vercel.app/meals/meals/${id}`)
           .then((res) => {
             setMeal(res.data);
             setTotalPrice(res.data.price * quantity);
@@ -116,7 +116,7 @@ const Orders = () => {
                 {meal && (
                     <div className='mt-[500px] md:mt-0'>
                         <img
-                        src={`https://panda-snack-back.vercel.app/meal_picture/${meal.Mealpicture}`}
+                        src={`https://panda-snack-back-v2.vercel.app/meal_picture/${meal.Mealpicture}`}
                         alt='Meal Image'
                         className='md:w-[400px] w-[300px] hover:scale-105 transition-all duration-500'
                         />

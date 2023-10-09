@@ -14,7 +14,6 @@ const SignUp = () => {
   const [phone , setPhone] = useState();
   const [role , setRole] = useState('User');
   const [password , setPassword] = useState();
-  const [picture , setPicture] = useState(null);
 
   const [showPassword , setShowPassword] = useState(false); //Show & hide password
   const togglePasswordVisibilty = () =>{
@@ -37,11 +36,10 @@ const Subscribe = async () => {
     formData.append('phone', phone);
     formData.append('role', role);
     formData.append('password', password);
-    formData.append('picture', picture); 
 
-    const response = await axios.post('https://panda-snack-back.vercel.app/users/subscribe', formData, {
+    const response = await axios.post('https://panda-snack-back-v2.vercel.app/users/subscribe', formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
       },
     });
 
@@ -56,12 +54,6 @@ const Subscribe = async () => {
   } finally {
     setLoading(false);
   }
-};
-
-
-const handlePhotoChange = e => {
-  const file = e.target.files[0];
-  setPicture(file);
 };
 
 return (
@@ -96,29 +88,6 @@ return (
       </select>
     </div>
   </div>
-{/* Picture Champ */}
-<div className="md:col-span-full mt-1 md:mt-0">
-  <label htmlFor="cover-photo" className="font-semibold font-mono dark:text-white">Cover photo</label>
-  <div className="mt-2 dark:bg-lime-900 flex justify-center rounded-lg border border-dashed border-lime-900 px-[45px] md:px-28 py-2">
-    <div className="text-center ">
-      <CoverPhoto />
-      <div className="mt-4 flex text-sm leading-6 text-gray-600 ">
-        <label htmlFor="file-upload" className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-          <span className="text-lime-500 px-1" >Upload a file</span>
-          <input
-              id="file-upload"
-              name="file-upload"
-              type="file"
-              onChange={handlePhotoChange}
-              className="sr-only"
-            />
-        </label>
-        <p className="pl-1 dark:text-slate-400"> or drag and drop</p>
-      </div>
-      <p className="text-xs leading-5 text-gray-600 dark:text-slate-400">PNG, JPG, GIF up to 10MB</p>
-    </div>
-  </div>
-</div>
   {/* Champ Password */}
   <div className='flex flex-col mt-1 md:mt-0'>
     <label htmlFor="password" className='font-semibold font-mono dark:text-white'>Password</label>

@@ -7,7 +7,7 @@ const Category = () => {
   const [selectedCategory, setSelectedCategory] = useState(null); 
   useEffect(() => {
     axios
-      .get('https://panda-snack-back.vercel.app/categorys/categories')
+      .get('https://panda-snack-back-v2.vercel.app/categorys/categories')
       .then((res) => {
         setCategories(res.data);
         if (res.data.length > 0) {
@@ -22,7 +22,7 @@ const Category = () => {
   useEffect(() => {
     if (selectedCategory) {
       axios
-        .get(`https://panda-snack-back.vercel.app/meals/mealsbycat/${selectedCategory._id}`)
+        .get(`https://panda-snack-back-v2.vercel.app/meals/mealsbycat/${selectedCategory._id}`)
         .then((res) => {
           setMealsByCat(res.data.meals);
         })
@@ -62,7 +62,7 @@ const Category = () => {
         {mealsByCat &&
         mealsByCat.map((item) => (
             <div key={item._id} className='md:w-1/3 dark:bg-lime-900 my-1 py-1 px-2 sm:w-1/2 flex items-center border-2 border-lime-300 rounded-md mx-2 md:mx-1 flex-col h-[425px]'>
-                <img src={`https://panda-snack-back.vercel.app/meal_picture/${item.Mealpicture}`} alt={item.name} className='hover:rotate-45 transition-all duration-500' width={250}/>
+                <img src={`https://panda-snack-back-v2.vercel.app/meal_picture/${item.Mealpicture}`} alt={item.name} className='hover:rotate-45 transition-all duration-500' width={250}/>
                 <h1 className='font-mono text-xl dark:text-white'>{item.name}</h1>
                 <h1 className=' text-lg text-slate-700 dark:text-slate-200 text-center'>{item.description}</h1>
                 <h1 className='text-xl font-extrabold font-mono text-lime-700 dark:text-lime-200 text-center'>{item.price}.00 DHs</h1>
